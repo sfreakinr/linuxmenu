@@ -27,7 +27,7 @@ def Docker():
 	while(1):
 		os.system("tput setaf 6")
 		print("*".center(150,"*"))
-		print("\n1.Docker Installation \n2.Docker Search \n3.Docker Pull\n4.Return to main menu")
+		print("\n1.Docker Installation \n2.Docker Search \n3.Docker Pull\n4.Show Docker Images\n5.Show All Docker Containers\n6.Return to main menu")
 		sub_choice=input("\nEnter Your Choice : ")
 		if sub_choice=='1':
 			os.system("yum install docker-ce --nobest -y")
@@ -39,6 +39,10 @@ def Docker():
 			img=input("Enter The Image Name You Want To Pull : ")
 			os.system("docker pull "+img)
 		if sub_choice=='4':
+			os.system("docker images")
+		if sub_choice=='5':
+			os.system("docker ps -a")
+		if sub_choice=='6':
 			break;
 		
 
