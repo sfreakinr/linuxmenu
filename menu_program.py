@@ -27,7 +27,7 @@ def Docker():
 	while(1):
 		os.system("tput setaf 6")
 		print("*".center(150,"*"))
-		print("\n1.Docker Installation \n2.Docker Search \n3.Docker Pull\n4.Show Docker Images\n5.Show All Docker Containers\n6.Return to main menu")
+		print("\n1.Docker Installation \n2.Docker Search \n3.Docker Pull\n4.Show Docker Images\n5.Show All Docker Containers\n6.Launch A Docker Container\n7.Start Docker Container\n8.Stop Docker Container\n9.Return to main menu")
 		sub_choice=input("\nEnter Your Choice : ")
 		if sub_choice=='1':
 			os.system("yum install docker-ce --nobest -y")
@@ -43,6 +43,17 @@ def Docker():
 		if sub_choice=='5':
 			os.system("docker ps -a")
 		if sub_choice=='6':
+			con_name=input("Enter Name For Your Container : ")
+			img=input("Enter Image Name : ")
+			os.system("tput setaf 3")
+			os.system("docker run -dit --name {} {}".format(con_name, img))
+		if sub_choice=='7':			
+			img=input("Enter Image Name : ")
+			os.system("docker start "+img)
+		if sub_choice=='8':			
+			img=input("Enter Image Name : ")
+			os.system("docker stop "+img)
+		if sub_choice=='9':
 			break;
 		
 
