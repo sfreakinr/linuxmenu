@@ -61,7 +61,32 @@ def Docker():
 		else:
 			print("Oops!!! Wrong Choice, Please Try Again")
 			os.system("tput setaf 2")	
-		
+#Function#3
+def ApacheHTTPD():
+	from tqdm import tqdm, trange
+	import time 
+	os.system("tput setaf 2")
+	print("Hold on tight while we're configuring apache webserver for you ;)")
+	os.system("yum install httpd -y")
+	os.system("systemctl start httpd")
+	os.system("systemctl enable httpd")
+	os.system("cp index.html /var/www/html")
+	pbar = tqdm(total=100)
+	for i in range(10):
+		time.sleep(0.3)
+		pbar.update(10)
+	pbar.close()	
+	print("\n\n\t\t\t\tSuccessfully Finished!!!\n\n")
+	while(1):
+		print("Do you want to open localhost in browser ?\n")
+		inp=input("Press Y to open\nPress N to finish and return to main menu : ")
+		if(inp=='y' or inp=='Y'):
+			os.system("firefox 127.0.0.1")
+			break;
+		elif(inp=='n' or inp=='N'):
+			break;
+		else:
+			break;
 
 os.system("tput setaf 3")
 print("-".center(150,"-"))
@@ -70,7 +95,7 @@ welcome="Linux Menu Program Using Python"
 print(welcome)
 while True:
 	os.system("tput setaf 3")
-	print(" \n 1.Basic Linux Commands \n 2.Docker \n 3.Apache HTTPD \n 4.Exit \n")
+	print(" \n 1.Basic Linux Commands \n 2.Docker \n 3.Apache HTTPD Configuration\n 4.Exit \n")
 	print("-".center(150,"*"))
 	main_choice=input("Choose your domain(1-4):")
 	if main_choice=='4':
@@ -87,11 +112,15 @@ while True:
 		elif main_choice=='2':
 			Docker()
 			break;
+
+		elif main_choice=='3':
+			ApacheHTTPD()
+			break;
 		else:
 			os.system("tput setaf 6")
 			print("\n\nWrong command!!Please try again\n\n")
 			break;
-				
+		
 		
 	else:
 		print("Wrong command!!Please try again")
